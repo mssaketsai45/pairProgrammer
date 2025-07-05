@@ -1,0 +1,11 @@
+# Netlify Deployment Instructions
+# Alternative to Vercel for frontend deployment
+
+1. Go to netlify.com and sign up
+2. Connect your GitHub repository
+3. Configure build settings:
+   - Base directory: devfinder_frontend
+   - Build command: npm run build
+   - Publish directory: devfinder_frontend/.next
+4. Add environment variables in Netlify dashboard
+5. Deploy and get your netlify.app URL

@@ -1,0 +1,11 @@
+# Heroku Deployment Instructions  
+# Alternative to Railway for backend deployment
+
+1. Install Heroku CLI
+2. Login: heroku login
+3. Create app: heroku create your-app-name
+4. Set environment variables:
+   heroku config:set NODE_ENV=production
+   heroku config:set DATABASE_URL="your-supabase-url"
+5. Deploy: git push heroku main
+6. Get your herokuapp.com URL

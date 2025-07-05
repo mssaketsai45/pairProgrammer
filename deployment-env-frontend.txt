@@ -1,0 +1,20 @@
+# Frontend Production Environment Variables
+# Copy these to your deployment platform (Vercel/Netlify)
+
+# Database (Supabase)
+DATABASE_URL="postgresql://postgres:devfinder-backend@db.dfuwlicbgkapmvvsrdzf.supabase.co:5432/postgres"
+
+# Google OAuth (Get from Google Cloud Console)
+GOOGLE_CLIENT_ID="1055165873370-bo9733q741l8eh7c6s7n1lmhdt6lhc6n.apps.googleusercontent.com"
+GOOGLE_CLIENT_SECRET="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"
+
+# NextAuth Configuration
+NEXTAUTH_SECRET="your-super-secret-key-generate-new-one"
+NEXTAUTH_URL="https://your-frontend-domain.vercel.app"
+
+# Backend API URL (will be updated after backend deployment)
+NEXT_PUBLIC_API_URL="https://your-backend-domain.railway.app"
+
+# Stream.io (Optional - for video calls)
+NEXT_PUBLIC_GET_STREAM_API_KEY="1372398"
+GET_STREAM_SECRET_KEY="1372398"

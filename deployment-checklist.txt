@@ -1,0 +1,14 @@
+// Production deployment checklist
+// After deployment, update these URLs in your Vercel environment variables:
+
+// 1. Update NEXT_PUBLIC_API_URL with your Railway backend URL
+NEXT_PUBLIC_API_URL=https://your-actual-backend.railway.app
+
+// 2. Update NEXTAUTH_URL with your Vercel frontend URL  
+NEXTAUTH_URL=https://your-actual-app.vercel.app
+
+// 3. Test these endpoints:
+// - https://your-backend.railway.app/api/health (should return OK)
+// - https://your-backend.railway.app/api/rooms (should return rooms array)
+// - https://your-app.vercel.app (should load the app)
+// - https://your-app.vercel.app/api/auth/signin (should show Google login)
