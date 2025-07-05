@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -39,7 +39,7 @@ export function RoomChat({ roomId }: ChatProps) {
   };
 
   // Fetch messages
-  const fetchMessages = async (showNotification = false) => {
+  const fetchMessages = useCallback(async (showNotification = false) => {
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/chat/rooms/${roomId}/messages`
@@ -69,7 +69,7 @@ export function RoomChat({ roomId }: ChatProps) {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [roomId, lastMessageId, isTabVisible, session?.user?.id]);
 
   // Show browser notification for new messages
   const showNotificationToUser = (message: Message) => {
@@ -136,7 +136,7 @@ export function RoomChat({ roomId }: ChatProps) {
       fetchMessages();
       requestNotificationPermission();
     }
-  }, [roomId]);
+  }, [roomId, fetchMessages]);
 
   // Auto-refresh messages every 3 seconds
   useEffect(() => {
@@ -147,7 +147,7 @@ export function RoomChat({ roomId }: ChatProps) {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [roomId, lastMessageId, isTabVisible]);
+  }, [roomId, lastMessageId, isTabVisible, fetchMessages]);
 
   // Track tab visibility for notifications
   useEffect(() => {

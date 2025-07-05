@@ -113,7 +113,7 @@ export function DevFinderVideo({ room }: { room: Room }) {
         }
       }
     };
-  }, []);
+  }, [session?.data?.user?.id, room?.id]);
 
   // Show video start button if not active
   if (!isVideoActive) {
@@ -127,7 +127,7 @@ export function DevFinderVideo({ room }: { room: Room }) {
           </div>
           <div>
             <h3 className="text-xl font-bold text-gray-200 mb-3">Ready to collaborate?</h3>
-            <p className="text-gray-400 mb-6 max-w-sm mx-auto leading-relaxed">Start a video call when you're ready to pair program or discuss together</p>
+            <p className="text-gray-400 mb-6 max-w-sm mx-auto leading-relaxed">Start a video call when you&apos;re ready to pair program or discuss together</p>
             <button
               onClick={() => setIsVideoActive(true)}
               className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"

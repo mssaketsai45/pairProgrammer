@@ -41,7 +41,10 @@ export function CreateRoomForm() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const room = await createRoomAction(values);
+    const room = await createRoomAction({
+      ...values,
+      githubRepo: values.githubRepo || null,
+    });
     toast({
       title: "Room Created",
       description: "Your room was successfully created",
