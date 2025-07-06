@@ -142,6 +142,9 @@ class DatabaseService {
    */
   async getAllRooms(searchTerm = null) {
     try {
+      console.log('🔍 Starting getAllRooms query...');
+      console.log('📊 Search term:', searchTerm);
+      
       // Simplified query without JOIN for now
       let query = db.select().from(rooms);
 
@@ -157,11 +160,14 @@ class DatabaseService {
         );
       }
 
+      console.log('🚀 Executing query...');
       const allRooms = await query;
       console.log(`📋 Retrieved ${allRooms.length} rooms${searchTerm ? ` (filtered by: "${searchTerm}")` : ''}`);
       return allRooms;
     } catch (error) {
-      console.error('❌ Failed to get rooms:', error.message);
+      console.error('❌ Failed to get rooms - Full error:', error);
+      console.error('❌ Error message:', error.message);
+      console.error('❌ Error stack:', error.stack);
       throw new Error(`Failed to get rooms: ${error.message}`);
     }
   }
