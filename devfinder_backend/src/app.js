@@ -69,6 +69,17 @@ app.get('/', (req, res) => {
   });
 });
 
+// Debug endpoint to check environment (remove after fixing)
+app.get('/debug', (req, res) => {
+  res.json({
+    node_env: process.env.NODE_ENV,
+    port: process.env.PORT,
+    database_url_exists: !!process.env.DATABASE_URL,
+    database_url_length: process.env.DATABASE_URL ? process.env.DATABASE_URL.length : 0,
+    database_url_prefix: process.env.DATABASE_URL ? process.env.DATABASE_URL.substring(0, 20) + '...' : 'NOT_SET'
+  });
+});
+
 // Health check route
 app.get('/health', (req, res) => {
   res.json({ 
