@@ -14,7 +14,12 @@ const PORT = process.env.PORT || 5000;
 
 // Basic middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002'], // Your Next.js frontend
+  origin: [
+    'http://localhost:3000', 
+    'http://localhost:3001', 
+    'http://localhost:3002',
+    'https://pair-programmer-one.vercel.app'  // Your deployed Vercel frontend
+  ],
   credentials: true
 }));
 app.use(express.json());
