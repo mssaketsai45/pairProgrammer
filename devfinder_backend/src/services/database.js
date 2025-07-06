@@ -142,17 +142,8 @@ class DatabaseService {
    */
   async getAllRooms(searchTerm = null) {
     try {
-      let query = db.select({
-        id: rooms.id,
-        name: rooms.name,
-        description: rooms.description,
-        tags: rooms.tags,
-        githubRepo: rooms.githubRepo,
-        userId: rooms.userId,
-        userName: users.name,
-        userImage: users.image
-      }).from(rooms)
-        .leftJoin(users, eq(rooms.userId, users.id));
+      // Simplified query without JOIN for now
+      let query = db.select().from(rooms);
 
       // Add search functionality
       if (searchTerm && searchTerm.trim()) {
